@@ -27,6 +27,7 @@ const theme = createTheme({
     primary: {
       main: "#fea013",
       hover: "#ba4a0c",
+      muted: "#69563A",
     },
     secondary: {
       main: "#d23131",
@@ -44,9 +45,26 @@ const theme = createTheme({
     border: {
       main: "#494949",
     },
+    side: {
+      main: "#111111",
+    },
   },
   typography: {
     fontFamily: "Poppins, Roboto",
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: { minWidth: 0 },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          fontWeight: 400,
+        },
+      },
+    },
   },
 });
 

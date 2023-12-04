@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
 #root {
-  height: 100%;
-
   --color-primary-red: #d23131;
   --color-primary-orange: #fea013;
   --color-primary-orange-hover: #ba4a0c;
@@ -16,4 +18,15 @@
   --color-text-disabled: #707070;
 
   --color-border-default: #494949;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+#root {
+  height: 100%;
 }
