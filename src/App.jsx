@@ -5,7 +5,7 @@ import SidePanel from "components/SidePanel/SidePanel";
 import MainSection from "components/MainSection/MainSection";
 
 function App() {
-  const [rosterSelected, setRosterSelected] = useState(false);
+  const [rosterSelected, setRosterSelected] = useState(true);
 
   const changePage = (changeToRoster) => {
     setRosterSelected(changeToRoster);
