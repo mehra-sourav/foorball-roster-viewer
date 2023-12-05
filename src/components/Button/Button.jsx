@@ -2,7 +2,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Primary, Secondary, IconButton } from "./Button.styles";
 
 export const PrimaryButton = ({
-  label,
+  children,
   height,
   width,
   color = "primary",
@@ -16,12 +16,18 @@ export const PrimaryButton = ({
       sx={{ ...sx, height: height, width: width }}
       {...rest}
     >
-      {label}
+      {children}
     </Primary>
   );
 };
 
-export const SecondaryButton = ({ label, height, width, color, ...rest }) => {
+export const SecondaryButton = ({
+  children,
+  height,
+  width,
+  color,
+  ...rest
+}) => {
   return (
     <Secondary
       variant="outlined"
@@ -29,13 +35,13 @@ export const SecondaryButton = ({ label, height, width, color, ...rest }) => {
       sx={{ height: height, width: width }}
       {...rest}
     >
-      {label}
+      {children}
     </Secondary>
   );
 };
 
 export const PrimaryIconButton = ({
-  label,
+  children,
   height = "40px",
   width = "40px",
   Icon = AddIcon,
@@ -49,13 +55,13 @@ export const PrimaryIconButton = ({
       sx={{ height: height, width: width }}
       {...rest}
     >
-      <Icon>{label}</Icon>
+      <Icon>{children}</Icon>
     </Primary>
   );
 };
 
 export const SecondaryIconButton = ({
-  label,
+  children,
   height = "40px",
   width = "40px",
   Icon = AddIcon,
@@ -69,7 +75,7 @@ export const SecondaryIconButton = ({
       sx={{ height: height, width: width }}
       {...rest}
     >
-      <Icon>{label}</Icon>
+      <Icon>{children}</Icon>
     </Secondary>
   );
 };

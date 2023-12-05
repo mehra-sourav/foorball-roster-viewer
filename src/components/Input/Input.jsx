@@ -1,6 +1,6 @@
 import { TextField } from "./Input.styles";
-const Input = ({ ...rest }) => {
-  return <TextField {...rest} />;
+const Input = ({ children, ...rest }) => {
+  return <TextField {...rest}>{children}</TextField>;
 };
 
 export default Input;

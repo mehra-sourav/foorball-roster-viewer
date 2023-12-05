@@ -5,11 +5,16 @@ export const TextField = styled(OutlinedInput)(({ theme }) => ({
   borderRadius: "0.5rem",
   backgroundColor: "transparent",
   color: theme.palette.text.main,
-
-  "&.MuiOutlinedInput-root  .MuiOutlinedInput-notchedOutline": {
-    borderColor: theme.palette.border.main,
+  "&.MuiOutlinedInput-root": {
+    "&:not(.Mui-error) .MuiOutlinedInput-notchedOutline": {
+      borderColor: theme.palette.border.main,
+    },
+    "&.Mui-disabled .MuiOutlinedInput-notchedOutline": {
+      borderColor: theme.palette.border.main,
+    },
   },
   "&.Mui-disabled": {
     backgroundColor: theme.palette.background.secondary,
+    borderColor: theme.palette.border.main,
   },
 }));

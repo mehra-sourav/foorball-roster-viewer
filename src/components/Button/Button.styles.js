@@ -21,17 +21,19 @@ export const Primary = styled(BaseButton)(({ theme }) => ({
   },
 }));
 
-export const Secondary = styled(BaseButton)(({ theme }) => ({
+export const Secondary = styled(BaseButton)(({ theme, color: colorProp }) => ({
   backgroundColor: "transparent",
-  borderColor: theme.palette.border.main,
   color: theme.palette.text.normal,
-
-  "&:hover": {
+  ...(colorProp !== "error"
+    ? { borderColor: theme.palette.border.main }
+    : { borderWidth: "1.5px" }),
+  "&:hover:not(.Mui-error)": {
     borderColor: theme.palette.border.main,
     color: theme.palette.text.main,
   },
   "&.Mui-disabled": {
     color: theme.palette.text.disabled,
+    borderColor: theme.palette.border.main,
   },
 }));
 
