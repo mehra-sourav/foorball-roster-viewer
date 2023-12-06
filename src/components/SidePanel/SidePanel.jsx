@@ -15,16 +15,16 @@ const SidePanel = ({ rosterSelected, changePage: changeToRosterPage }) => {
         <SidepanelButton
           color="primary"
           Icon={MenuRoundedIcon}
-          active={!rosterSelected}
-          onClick={() => changeToRosterPage(false)}
+          active={rosterSelected}
+          onClick={() => changeToRosterPage(true)}
         ></SidepanelButton>
 
         {/* Roster button */}
         <SidepanelButton
           color="primary"
           Icon={Groups3RoundedIcon}
-          active={rosterSelected}
-          onClick={() => changeToRosterPage(true)}
+          active={!rosterSelected}
+          onClick={() => changeToRosterPage(false)}
         ></SidepanelButton>
       </ButtonContainer>
     </SidePanelContainer>

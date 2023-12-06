@@ -16,7 +16,7 @@ export const Primary = styled(BaseButton)(({ theme }) => ({
   },
 
   "&.Mui-disabled": {
-    backgroundColor: theme.palette.background.main,
+    backgroundColor: theme.palette.background.secondary,
     color: theme.palette.text.disabled,
   },
 }));

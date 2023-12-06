@@ -4,34 +4,35 @@ import { SecondaryButton } from "components/Button/Button";
 import Input from "components/Input/Input";
 import { HiddenInput } from "./FilePicker.styles";
 
-const FilePicker = ({ acceptableFileFormat, ...rest }) => {
+const FilePicker = ({ inputFileRef, sx, setDisabled, ...rest }) => {
   const [fileName, setName] = useState("");
   const [error, setError] = useState(false);
-  const inputFile = useRef();
 
   const handleFileUpload = () => {
-    let uploadedFile = inputFile.current.files[0];
+    let uploadedFile = inputFileRef.current.files[0];
     if (uploadedFile?.type !== "text/csv") {
       setError(true);
+      setDisabled(true);
     } else {
+      setDisabled(false);
       setError(false);
     }
-    setName(uploadedFile.name);
+    setName(uploadedFile?.name);
   };
 
   return (
     <Input
       readOnly
-      sx={{ pr: 0 }}
+      sx={{ ...sx, pr: 0 }}
       endAdornment={
         <InputAdornment position="end">
           <SecondaryButton component="label" {...(error && { color: "error" })}>
             Select File
             <HiddenInput
-              ref={inputFile}
+              ref={inputFileRef}
               onChange={handleFileUpload}
               type="file"
-              accept={acceptableFileFormat}
+              accept={".csv"}
               id="sourav"
             />
           </SecondaryButton>
