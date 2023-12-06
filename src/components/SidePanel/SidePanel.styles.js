@@ -2,7 +2,7 @@ import { styled } from "@mui/material";
 
 export const SidePanelContainer = styled("aside")(({ theme }) => ({
   boxSizing: "border-box",
-  width: "4%",
+  width: "3vw",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
