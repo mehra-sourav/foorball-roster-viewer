@@ -5,6 +5,8 @@ A web app where you can upload a football team's roster and view it in a tabular
 ## Deployed Link 
 The app is deployed on Netlify and can be accessed through ➡️ [this](https://football-roster-viewer.netlify.app)
 
+Use the included psg-roster-players.csv file to upload data.
+
 ## Available Scripts
 
 In the project directory, you can run:
