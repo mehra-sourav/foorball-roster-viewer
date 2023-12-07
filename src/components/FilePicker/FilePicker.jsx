@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { InputAdornment } from "@mui/material";
 import { SecondaryButton } from "components/Button/Button";
 import Input from "components/Input/Input";

@@ -3,7 +3,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "theme";
 import SidePanel from "components/SidePanel/SidePanel";
 import MainSection from "components/MainSection/MainSection";
-import { csvToArrayParser } from "utils";
+import { csvToArrayParser, convertToCamelCase } from "utils";
 
 function App() {
   const [rosterSelected, setRosterSelected] = useState(true);
@@ -18,9 +18,11 @@ function App() {
     reader.readAsText(file);
     reader.onload = (event) => {
       const csvdata = event.target.result;
-      const records = csvToArrayParser(csvdata);
 
-      setPlayerData(records);
+      let { columns, ...playerList } = csvToArrayParser(csvdata);
+      let playerData = [columns, ...Object.values(playerList)];
+
+      setPlayerData(playerData);
     };
   };
 

@@ -1,15 +1,14 @@
 /** @type { import('@storybook/react').Preview } */
 import React from "react";
-import { ThemeProvider } from "@material-ui";
+// import { ThemeProvider } from "@material-ui";
 import muiTheme from "../src/theme";
-console.log("MUITHEME", muiTheme);
-export const decorators = [
-  (Story) => (
-    <ThemeProvider theme={muiTheme}>
-      <Story />
-    </ThemeProvider>
-  ),
-];
+// export const decorators = [
+//   (Story) => (
+//     <ThemeProvider theme={muiTheme}>
+//       <Story />
+//     </ThemeProvider>
+//   ),
+// ];
 
 // export const decorators = [
 //   withThemeFromJSXProvider({

@@ -6,7 +6,6 @@ import {
   IconButton,
   DialogActions,
   DialogContent,
-  Button,
 } from "@mui/material";
 import {
   MainSectionContainer,
@@ -25,49 +24,64 @@ const ImportDialog = ({
   toggleDialog,
   inputFileRef,
   handleFileImport,
-}) => (
-  <Dialog
-    onClose={toggleDialog}
-    aria-labelledby="customized-dialog-title"
-    open={isOpen}
-  >
-    <DialogTitle sx={{ p: 0, mb: 2 }} id="customized-dialog-title">
-      Importer
-      <IconButton
-        aria-label="close"
-        onClick={toggleDialog}
-        sx={{
-          position: "absolute",
-          right: 24,
-          top: 24,
-          padding: 0,
-          color: (theme) => theme.palette.grey[500],
-        }}
-      >
-        <CloseIcon />
-      </IconButton>
-    </DialogTitle>
+}) => {
+  const [isButtonDisabled, setDisabled] = useState(true);
 
-    <Divider sx={{ borderColor: "border.main", mb: 3 }} />
+  return (
+    <Dialog
+      onClose={toggleDialog}
+      aria-labelledby="customized-dialog-title"
+      open={isOpen}
+    >
+      <DialogTitle sx={{ p: 0, mb: 2 }} id="customized-dialog-title">
+        Importer
+        <IconButton
+          aria-label="close"
+          onClick={toggleDialog}
+          sx={{
+            position: "absolute",
+            right: 24,
+            top: 24,
+            padding: 0,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
 
-    <DialogContent sx={{ padding: 0 }}>
-      <Typography sx={{ mb: 1 }}>Roster File</Typography>
+      <Divider sx={{ borderColor: "border.main", mb: 3 }} />
 
-      <FilePicker sx={{ mb: 2 }} inputFileRef={inputFileRef} />
+      <DialogContent sx={{ padding: 0 }}>
+        <Typography sx={{ mb: 1 }}>Roster File</Typography>
 
-      <Typography gutterBottom color="text.muted">
-        File must be in .csv format
-      </Typography>
-    </DialogContent>
-    <DialogActions>
-      <PrimaryButton height="auto" onClick={handleFileImport}>
-        Import
-      </PrimaryButton>
-    </DialogActions>
-  </Dialog>
-);
+        <FilePicker
+          sx={{ mb: 2 }}
+          inputFileRef={inputFileRef}
+          setDisabled={setDisabled}
+        />
 
-const MainSection = ({ rosterSelected, handleFileImport }) => {
+        <Typography gutterBottom color="text.muted">
+          File must be in .csv format
+        </Typography>
+      </DialogContent>
+      <DialogActions>
+        <PrimaryButton
+          disabled={isButtonDisabled}
+          height="auto"
+          onClick={() => {
+            handleFileImport();
+            toggleDialog();
+          }}
+        >
+          Import
+        </PrimaryButton>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
+const MainSection = ({ rosterSelected, handleFileImport, playerData }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const inputFileRef = useRef();
 
@@ -84,7 +98,6 @@ const MainSection = ({ rosterSelected, handleFileImport }) => {
         style={{
           display: "flex",
           marginBottom: "1.5rem",
-          border: "1px solid white",
         }}
       >
         <div style={{ marginRight: "auto" }}>
@@ -95,26 +108,30 @@ const MainSection = ({ rosterSelected, handleFileImport }) => {
           {/* Team Name */}
           <TeamName component="span">My Team</TeamName>
         </div>
+        {rosterSelected && (
+          <PrimaryButton
+            sx={{ px: 1 }}
+            height="auto"
+            width="200px"
+            onClick={toggleDialog}
+          >
+            Import Team
+          </PrimaryButton>
+        )}
+      </div>
 
-        <PrimaryButton
-          sx={{ px: 1 }}
-          height="auto"
-          width="200px"
-          onClick={toggleDialog}
-        >
-          Import Team
-        </PrimaryButton>
+      <DetailsContainer maxWidth={false} disableGutters>
+        {rosterSelected ? <Roster /> : <Formation playerData={playerData} />}
+      </DetailsContainer>
+
+      {rosterSelected && (
         <ImportDialog
           isOpen={dialogOpen}
           toggleDialog={toggleDialog}
           inputFileRef={inputFileRef}
           handleFileImport={handleFileUpload}
         />
-      </div>
-
-      <DetailsContainer maxWidth={false} disableGutters>
-        {rosterSelected ? <Roster /> : <Formation />}
-      </DetailsContainer>
+      )}
     </MainSectionContainer>
   );
 };
