@@ -1,15 +1,16 @@
 import { Box } from "@mui/material";
 
-export const Image = ({ height, width, imagePath }) => {
+export const Image = ({ height, width, alt, imagePath, sx }) => {
   return (
     <Box
       component="img"
       sx={{
+        ...sx,
         height,
         width,
       }}
-      alt="Roster Viewer Logo"
-      src={require(imagePath)}
+      alt={alt}
+      src={imagePath}
     />
   );
 };

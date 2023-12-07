@@ -17,7 +17,7 @@ const Formation = ({ playerData }) => {
   }, []);
 
   return (
-    <div style={{ display: "flex", height: "100%", gap: "2rem" }}>
+    <div style={{ display: "flex", height: "100%" }}>
       <Canvas
         positionsCoordinates={positionsCoordinates.current}
         selectedPlayer={selectedPlayer}
