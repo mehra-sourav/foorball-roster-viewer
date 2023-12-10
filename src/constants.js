@@ -17,3 +17,8 @@ export const canvasCoordinates = {
     [570, 395],
   ],
 };
+
+export const INITIAL_APP_STATE = {
+  selectedPlayer: null,
+  playerData: null,
+};

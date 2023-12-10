@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { CardMedia, CardContent, Typography, Divider } from "@mui/material";
 import {
   CardContainer,
@@ -11,8 +12,11 @@ import {
 } from "./PlayerCard.styles";
 import { Image } from "components/Image/Image";
 import { convertToCamelCase } from "utils";
+import { AppContext } from "context";
 
-const PlayerCard = ({ selectedPlayer }) => {
+const PlayerCard = () => {
+  const { selectedPlayer } = useContext(AppContext);
+
   const isPlayerGoalKeeper = () =>
     selectedPlayer?.position?.toLowerCase() === "goalkeeper";
 
@@ -79,7 +83,7 @@ const PlayerCard = ({ selectedPlayer }) => {
           <PhysicalStatsContainer show={!!selectedPlayer}>
             {/* Height Container */}
             <div style={{ border: "0px solid white" }}>
-              <PhysicalStatsText variant="h5" component="div" header>
+              <PhysicalStatsText variant="h5" component="div" header="true">
                 Height
               </PhysicalStatsText>
               <PhysicalStatsText variant="h5" component="div">
@@ -89,7 +93,7 @@ const PlayerCard = ({ selectedPlayer }) => {
 
             {/* Weight Container */}
             <div style={{ border: "0px solid white" }}>
-              <PhysicalStatsText variant="h5" component="div" header>
+              <PhysicalStatsText variant="h5" component="div" header="true">
                 Weight
               </PhysicalStatsText>
               <PhysicalStatsText variant="h5" component="div">
@@ -99,7 +103,7 @@ const PlayerCard = ({ selectedPlayer }) => {
 
             {/* Nationality Container */}
             <div style={{ border: "0px solid white" }}>
-              <PhysicalStatsText variant="h5" component="div" header>
+              <PhysicalStatsText variant="h5" component="div" header="true">
                 Nationality
               </PhysicalStatsText>
               <span
@@ -117,7 +121,7 @@ const PlayerCard = ({ selectedPlayer }) => {
                   imagePath={selectedPlayer?.flagImage}
                   sx={{ mr: 2, position: "relative" }}
                 />
-                <PhysicalStatsText variant="h5" component="div" image>
+                <PhysicalStatsText variant="h5" component="div">
                   {selectedPlayer?.nationality}
                 </PhysicalStatsText>
               </span>
@@ -131,7 +135,7 @@ const PlayerCard = ({ selectedPlayer }) => {
             <Grid>
               {/* Appearances Container */}
               <div style={{ border: "0px solid white" }}>
-                <CareerStatsText variant="h5" component="div" metric>
+                <CareerStatsText variant="h5" component="div" metric="true">
                   {selectedPlayer?.appearances}
                 </CareerStatsText>
                 <CareerStatsText variant="h5" component="div">
@@ -141,7 +145,7 @@ const PlayerCard = ({ selectedPlayer }) => {
 
               {/* Played time Container */}
               <div style={{ border: "0px solid white" }}>
-                <CareerStatsText variant="h5" component="div" metric>
+                <CareerStatsText variant="h5" component="div" metric="true">
                   {selectedPlayer?.minutesPlayed}
                 </CareerStatsText>
                 <CareerStatsText variant="h5" component="div">
@@ -151,7 +155,7 @@ const PlayerCard = ({ selectedPlayer }) => {
 
               {/* Player specific Container */}
               <div style={{ border: "0px solid white" }}>
-                <CareerStatsText variant="h5" component="div" metric>
+                <CareerStatsText variant="h5" component="div" metric="true">
                   {selectedPlayer?.[convertToCamelCase(playerKeys[0])]}
                 </CareerStatsText>
                 <CareerStatsText variant="h5" component="div">
@@ -159,7 +163,7 @@ const PlayerCard = ({ selectedPlayer }) => {
                 </CareerStatsText>
               </div>
               <div style={{ border: "0px solid white" }}>
-                <CareerStatsText variant="h5" component="div" metric>
+                <CareerStatsText variant="h5" component="div" metric="true">
                   {selectedPlayer?.[convertToCamelCase(playerKeys[1])]}
                 </CareerStatsText>
                 <CareerStatsText variant="h5" component="div">
